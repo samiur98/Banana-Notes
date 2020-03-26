@@ -18,9 +18,10 @@ router.get('/getNote/:userID/:title', (req, res) => {
     const title = req.params.title
     const userID = req.params.userID
 
-    sqlQuery = `SELECT * FROM notes WHERE 'user_id' = ${userID} AND 'title' = '${title}';`
+    sqlQuery = `SELECT * FROM notes WHERE user_id = ${userID} AND title = '${title}';`
     pool.query(sqlQuery, (err, rows, fields) => {
         if(err){
+            console.log(err)
             console.log("Error in connecting to notes database during GET request.")
             res.sendStatus(500)
             return
@@ -40,12 +41,11 @@ router.post('/addNote/:userID/:title/:text', (req, res) => {
     //POST request for notes.
     console.log("Processing POST request for notes.")
     const userID = req.params.userID
-    console.log(userID)
     const title = req.params.title
     const text = req.params.text
     if((title.length > 100) || (text.length > 16000)){
         console.log("Title and/or note length exceeds allowed capacity.")
-        res.send(400)
+        res.sendStatus(400)
         return
     }
 
@@ -59,6 +59,49 @@ router.post('/addNote/:userID/:title/:text', (req, res) => {
         }
         console.log("POST request for notes successfully processed")
         res.sendStatus(201)
+    })
+})
+
+router.put('/updateNote/:userID/:title/:text', (req, res) => {
+    //PUT request for notes.
+    console.log("Processing PUT request for notes.")
+    const userID = req.params.userID
+    const title = req.params.title
+    const text = req.params.text
+    if((title.length > 100) || (text.length > 160000)){
+        console.log("Title and/or note length exceeds allowed capacity.")
+        res.sendStatus(400)
+    }
+
+    sqlQuery = `UPDATE notes SET note = '${text}' WHERE user_id = '${userID}' AND title = '${title}'`
+    pool.query(sqlQuery, (err, rows, fields) => {
+        if(err){
+            console.log(err)
+            console.log("Error in connecting to database during PUT request")
+            res.sendStatus(500)
+            return
+        }
+        console.log("PUT request for notes successfully processed.")
+        res.sendStatus(201)
+    })
+})
+
+router.delete('/deleteNote/:userID/:title', (req, res) => {
+    //DELETE request for notes.
+    console.log("Processing DELETE request for notes.")
+    const userID = req.params.userID
+    const title = req.params.title
+
+    sqlQuery = `DELETE FROM notes WHERE user_id = '${userID}' AND title = '${title}'`
+    pool.query(sqlQuery, (err, rows, fields) => {
+        if(err){
+            console.log(err)
+            console.log("Error in connecting to database during DELETE request")
+            res.sendStatus(500)
+            return
+        }
+        console.log("DELETE request for notes successfully processed.")
+        res.sendStatus(204)
     })
 })
 
