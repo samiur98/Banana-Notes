@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Banana_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Banana_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="973.91304347826099" y="51.5625"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="Qpg-O2-x7W">
             <objects>
-                <viewController id="8c5-Je-AuQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8c5-Je-AuQ" customClass="SignUpViewController" customModule="Banana_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sb2-SD-JBf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +109,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="signUpPressed:" destination="8c5-Je-AuQ" eventType="touchUpInside" id="NrO-2L-uPt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -129,15 +132,19 @@
                         <viewLayoutGuide key="safeArea" id="k9L-BQ-IWg"/>
                     </view>
                     <navigationItem key="navigationItem" id="dZA-SB-RYP"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="LkO-69-M6M" id="SyZ-g2-JFx"/>
+                        <outlet property="passwordTextField" destination="yJ1-EN-yfJ" id="bme-wo-YaW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3U-ND-c2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1715.9420289855075" y="569.86607142857144"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="ECz-MP-zmg">
             <objects>
-                <viewController id="t0M-dW-MKf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t0M-dW-MKf" customClass="LoginViewController" customModule="Banana_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5sB-jz-GBz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,6 +185,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="t0M-dW-MKf" eventType="touchUpInside" id="aKU-bD-2Ch"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -198,15 +208,19 @@
                         <viewLayoutGuide key="safeArea" id="aWR-fL-JmG"/>
                     </view>
                     <navigationItem key="navigationItem" id="rtQ-os-S2J"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="zUR-nh-N5W" id="XO8-0K-3cO"/>
+                        <outlet property="passwordTextField" destination="v7y-8y-U13" id="C9O-0s-M5k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cI-qb-JRo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1676.8115942028987" y="-74.330357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Dashboard View Controller-->
         <scene sceneID="Wov-XT-0uy">
             <objects>
-                <viewController id="s7L-9Q-p1k" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s7L-9Q-p1k" customClass="DashboardViewController" customModule="Banana_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Rm-26-Jcm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

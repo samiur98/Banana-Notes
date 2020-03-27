@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2242C992242DAE4600479423 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242C991242DAE4600479423 /* LoginViewController.swift */; };
+		2242C994242DAEC300479423 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242C993242DAEC300479423 /* SignUpViewController.swift */; };
+		2242C996242DAF8500479423 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242C995242DAF8500479423 /* DashboardViewController.swift */; };
+		2242C998242DC3B100479423 /* UserRegistrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242C997242DC3B100479423 /* UserRegistrator.swift */; };
+		2242C99A242DC4FF00479423 /* Registrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2242C999242DC4FF00479423 /* Registrator.swift */; };
 		22D7F8CE24272D9E00F303F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7F8CD24272D9E00F303F6 /* AppDelegate.swift */; };
 		22D7F8D024272D9E00F303F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7F8CF24272D9E00F303F6 /* SceneDelegate.swift */; };
 		22D7F8D224272D9E00F303F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D7F8D124272D9E00F303F6 /* ViewController.swift */; };
@@ -36,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2242C991242DAE4600479423 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2242C993242DAEC300479423 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		2242C995242DAF8500479423 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		2242C997242DC3B100479423 /* UserRegistrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrator.swift; sourceTree = "<group>"; };
+		2242C999242DC4FF00479423 /* Registrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registrator.swift; sourceTree = "<group>"; };
 		22D7F8CA24272D9E00F303F6 /* Banana Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Banana Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D7F8CD24272D9E00F303F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22D7F8CF24272D9E00F303F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +119,11 @@
 				22D7F8D824272DA100F303F6 /* LaunchScreen.storyboard */,
 				22D7F8DB24272DA100F303F6 /* Info.plist */,
 				22D7F8FD24274CFD00F303F6 /* Login.storyboard */,
+				2242C991242DAE4600479423 /* LoginViewController.swift */,
+				2242C993242DAEC300479423 /* SignUpViewController.swift */,
+				2242C995242DAF8500479423 /* DashboardViewController.swift */,
+				2242C997242DC3B100479423 /* UserRegistrator.swift */,
+				2242C999242DC4FF00479423 /* Registrator.swift */,
 			);
 			path = "Banana Notes";
 			sourceTree = "<group>";
@@ -263,9 +278,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2242C998242DC3B100479423 /* UserRegistrator.swift in Sources */,
+				2242C992242DAE4600479423 /* LoginViewController.swift in Sources */,
+				2242C99A242DC4FF00479423 /* Registrator.swift in Sources */,
+				2242C996242DAF8500479423 /* DashboardViewController.swift in Sources */,
 				22D7F8D224272D9E00F303F6 /* ViewController.swift in Sources */,
 				22D7F8CE24272D9E00F303F6 /* AppDelegate.swift in Sources */,
 				22D7F8D024272D9E00F303F6 /* SceneDelegate.swift in Sources */,
+				2242C994242DAEC300479423 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
