@@ -11,12 +11,9 @@ import UIKit
 class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!;
     @IBOutlet weak var passwordTextField: UITextField!;
-    var uniqueEmail = false;
-    var registrator: UserRegistrator = Registrator();
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -24,25 +21,20 @@ class SignUpViewController: UIViewController {
         NSLog("SignUp Button Pressed");
         if(!validateEmail()){
             NSLog("Email text field not formatted correctly.");
-            let alertEmail = UIAlertController(title: "Email not formatted correctly", message: "Please provide a value for the email address field.", preferredStyle: .alert);
-            alertEmail.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
-            self.present(alertEmail, animated: true);
+            self.generateEmailAlert();
             return;
         }
         if(!validatePassword()){
             NSLog("Password text field not formatted correctly.");
-            let alertPassword = UIAlertController(title: "Password not formatted correctly", message: "Please provide a value for the password field that is at least 8 charachters long.", preferredStyle: .alert);
-            alertPassword.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
-            self.present(alertPassword, animated: true);
+            self.generatePasswordAlert();
             return;
         }
+        
         let postURLString = "http://localhost:3020/users/addUser/" + self.emailTextField.text! + "/" + self.passwordTextField.text!;
         let url = URL(string: postURLString);
         if(url == nil){
             NSLog("Prolem producing url");
-            let alertInternal = UIAlertController(title: "Internal Issue", message: "Sorry there has been an internal issue.", preferredStyle: .alert);
-            alertInternal.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
-            self.present(alertInternal, animated: true);
+            self.generateErrorAlert();
             return;
         }
         postRequest(url: url!);
@@ -53,29 +45,24 @@ class SignUpViewController: UIViewController {
         let sharedSession = URLSession.shared;
         var request = URLRequest(url: url);
         request.httpMethod = "POST";
+        
         let dataTask = sharedSession.dataTask(with: request) {
             (data, response, apiError) in
             DispatchQueue.main.async {
                 if let err = apiError{
                     NSLog("Error connecting to API");
                     NSLog(err.localizedDescription);
-                    let alertInternal = UIAlertController(title: "Internal Issue", message: "Sorry there has been an internal issue.", preferredStyle: .alert);
-                    alertInternal.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
-                    self.present(alertInternal, animated: true);
+                    self.generateErrorAlert();
                     return;
                 }
                 if let res = response as? HTTPURLResponse{
                     if(res.statusCode == 201){
                         NSLog("Successfull");
-                        let alertSuccess = UIAlertController(title: "Success", message: "User successfullly registered!", preferredStyle: .alert);
-                        alertSuccess.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
-                        self.present(alertSuccess, animated: true);
+                        self.generateSuccessAlert();
                     }
                     else{
                         NSLog("Unsuccessful");
-                        let alertFailure = UIAlertController(title: "Sorry", message: "The provided email address is taken.", preferredStyle: .alert);
-                        alertFailure.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
-                        self.present(alertFailure, animated: true);
+                        self.generateFailuerAlert();
                     }
                 }
                 else{
@@ -84,6 +71,36 @@ class SignUpViewController: UIViewController {
             }
         };
         dataTask.resume();
+    }
+    
+    func generateErrorAlert(){
+        let alertInternal = UIAlertController(title: "Internal Issue", message: "Sorry there has been an internal issue.", preferredStyle: .alert);
+        alertInternal.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
+        self.present(alertInternal, animated: true);
+    }
+    
+    func generateEmailAlert(){
+        let alertEmail = UIAlertController(title: "Email not formatted correctly", message: "Please provide a value for the email address field.", preferredStyle: .alert);
+        alertEmail.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
+        self.present(alertEmail, animated: true);
+    }
+    
+    func generatePasswordAlert(){
+        let alertPassword = UIAlertController(title: "Password not formatted correctly", message: "Please provide a value for the password field that is at least 8 charachters long.", preferredStyle: .alert);
+        alertPassword.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
+        self.present(alertPassword, animated: true);
+    }
+    
+    func generateSuccessAlert(){
+        let alertSuccess = UIAlertController(title: "Success", message: "User successfullly registered!", preferredStyle: .alert);
+        alertSuccess.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
+        self.present(alertSuccess, animated: true);
+    }
+    
+    func generateFailuerAlert(){
+        let alertFailure = UIAlertController(title: "Sorry", message: "The provided email address is taken.", preferredStyle: .alert);
+        alertFailure.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
+        self.present(alertFailure, animated: true);
     }
     
     func validateEmail() -> Bool{
