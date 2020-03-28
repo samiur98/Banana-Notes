@@ -225,10 +225,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ks3-7P-yYF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7Q-sH-cZa">
                                 <rect key="frame" x="246" y="721.5" width="108" height="90"/>
                                 <color key="backgroundColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -250,17 +246,17 @@
                                     <constraint firstAttribute="width" constant="96" id="WCx-Tx-56J"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="person.circle.fill" catalog="system"/>
+                                <state key="normal" backgroundImage="arrow.left.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="goBack:" destination="s7L-9Q-p1k" eventType="touchUpInside" id="dsP-vS-uZ2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="4cw-4e-owM" firstAttribute="leading" secondItem="lBg-gc-M7X" secondAttribute="leading" constant="60" id="8CB-mB-DuI"/>
-                            <constraint firstItem="Ks3-7P-yYF" firstAttribute="leading" secondItem="lBg-gc-M7X" secondAttribute="leading" id="LNw-8w-Mdf"/>
                             <constraint firstItem="lBg-gc-M7X" firstAttribute="trailing" secondItem="s7Q-sH-cZa" secondAttribute="trailing" constant="60" id="iDH-NR-vSi"/>
-                            <constraint firstItem="Ks3-7P-yYF" firstAttribute="trailing" secondItem="lBg-gc-M7X" secondAttribute="trailing" id="jCK-XE-Qgq"/>
                             <constraint firstItem="lBg-gc-M7X" firstAttribute="bottom" secondItem="4cw-4e-owM" secondAttribute="bottom" constant="50" id="oMw-Cc-iiI"/>
-                            <constraint firstItem="Ks3-7P-yYF" firstAttribute="top" secondItem="lBg-gc-M7X" secondAttribute="top" id="w9D-7a-OoS"/>
                             <constraint firstItem="lBg-gc-M7X" firstAttribute="bottom" secondItem="s7Q-sH-cZa" secondAttribute="bottom" constant="50" id="xSa-JH-mX1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lBg-gc-M7X"/>
@@ -291,8 +287,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left.circle.fill" catalog="system" width="64" height="60"/>
         <image name="person" catalog="system" width="64" height="58"/>
-        <image name="person.circle.fill" catalog="system" width="64" height="60"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
     <color key="tintColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
