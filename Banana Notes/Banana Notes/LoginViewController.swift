@@ -68,7 +68,10 @@ class LoginViewController: UIViewController {
                 do{
                     let jsonData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String : Any];
                     NSLog(jsonData!.description);
+                    let userID = jsonData!["userId"] as! Int;
                     let dashBoard = self.storyboard?.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController;
+                    dashBoard.modalPresentationStyle = .fullScreen;
+                    dashBoard.userID = userID;
                     self.present(dashBoard, animated: true, completion: nil);
                 }catch{
                     NSLog("Problem parsing JSON");

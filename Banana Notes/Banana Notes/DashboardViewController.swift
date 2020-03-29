@@ -9,17 +9,37 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
-
+    var userID = -1;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        NSLog("Ferris Bueller");
+        NSLog(userID.description);
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        NSLog("Log");
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+    }
     @IBAction func goBack(_ sender: Any) {
+        //Method that returns user to login page.
+        NSLog("Back Button Pressed.");
         presentingViewController?.dismiss(animated: true, completion: nil);
     }
     
+    @IBAction func newNote(_ sender: Any) {
+        //Method that instantiates a new NoteViewController View.
+        let newNote = self.storyboard?.instantiateViewController(withIdentifier: "NoteViewController") as! NoteViewController;
+        newNote.modalPresentationStyle = .fullScreen;
+        newNote.userID = userID;
+        newNote.updating = false;
+        self.present(newNote, animated: true, completion: nil);
+    }
     /*
     // MARK: - Navigation
 

@@ -237,6 +237,9 @@
                                 <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="newNote:" destination="s7L-9Q-p1k" eventType="touchUpInside" id="Xrf-oe-S5s"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cw-4e-owM">
                                 <rect key="frame" x="60" y="721.5" width="96" height="90"/>
@@ -267,6 +270,97 @@
             </objects>
             <point key="canvasLocation" x="2453.6231884057975" y="-75"/>
         </scene>
+        <!--Note View Controller-->
+        <scene sceneID="ebK-lA-Eqn">
+            <objects>
+                <viewController storyboardIdentifier="NoteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9bn-T8-sIz" customClass="NoteViewController" customModule="Banana_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FQQ-y4-Lvx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-AV-DOV">
+                                <rect key="frame" x="287" y="761.5" width="101" height="85"/>
+                                <color key="backgroundColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="101" id="UAD-Sf-dJQ"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="checkmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="updateOrAdd:" destination="9bn-T8-sIz" eventType="touchUpInside" id="8RE-GF-MAX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ml4-EB-6lh">
+                                <rect key="frame" x="30" y="759.5" width="90" height="87"/>
+                                <color key="backgroundColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="Ixb-Af-XZe"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="arrow.left.circle.fill" catalog="system">
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="9bn-T8-sIz" eventType="touchUpInside" id="pra-hC-zkC"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGI-Ql-jGL">
+                                <rect key="frame" x="0.0" y="44" width="426" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ah3-65-G7a">
+                                <rect key="frame" x="0.0" y="109" width="426" height="620"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hmk-hI-uId">
+                                <rect key="frame" x="150" y="763.5" width="107" height="83"/>
+                                <color key="backgroundColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="Hya-p5-qw1"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="trash.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="deleteNote:" destination="9bn-T8-sIz" eventType="touchUpInside" id="8se-dd-maM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="bGI-Ql-jGL" firstAttribute="top" secondItem="z4k-tH-XB5" secondAttribute="top" id="1Od-Qi-DwE"/>
+                            <constraint firstItem="mUr-AV-DOV" firstAttribute="leading" secondItem="Hmk-hI-uId" secondAttribute="trailing" constant="30" id="927-QD-8IP"/>
+                            <constraint firstItem="Ml4-EB-6lh" firstAttribute="top" secondItem="Ah3-65-G7a" secondAttribute="bottom" constant="30" id="BMg-0s-JFw"/>
+                            <constraint firstItem="Ah3-65-G7a" firstAttribute="top" secondItem="bGI-Ql-jGL" secondAttribute="bottom" constant="30" id="BvH-SL-d7q"/>
+                            <constraint firstItem="mUr-AV-DOV" firstAttribute="top" secondItem="Ah3-65-G7a" secondAttribute="bottom" constant="32" id="HAB-yX-Vg9"/>
+                            <constraint firstItem="z4k-tH-XB5" firstAttribute="trailing" secondItem="mUr-AV-DOV" secondAttribute="trailing" constant="26" id="Hd1-GF-NJV"/>
+                            <constraint firstItem="z4k-tH-XB5" firstAttribute="bottom" secondItem="Ml4-EB-6lh" secondAttribute="bottom" constant="15" id="UBH-Wc-9YH"/>
+                            <constraint firstItem="Ml4-EB-6lh" firstAttribute="leading" secondItem="z4k-tH-XB5" secondAttribute="leading" constant="30" id="b7P-WS-9QO"/>
+                            <constraint firstItem="Hmk-hI-uId" firstAttribute="top" secondItem="Ah3-65-G7a" secondAttribute="bottom" constant="34" id="fu0-vc-QCV"/>
+                            <constraint firstItem="Ml4-EB-6lh" firstAttribute="bottom" secondItem="Hmk-hI-uId" secondAttribute="bottom" id="jR2-D0-z7d"/>
+                            <constraint firstItem="Hmk-hI-uId" firstAttribute="bottom" secondItem="mUr-AV-DOV" secondAttribute="bottom" id="lgd-ja-r2J"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bGI-Ql-jGL" secondAttribute="trailing" constant="-32" id="oe6-BI-9As"/>
+                            <constraint firstItem="Hmk-hI-uId" firstAttribute="leading" secondItem="Ml4-EB-6lh" secondAttribute="trailing" constant="30" id="ry3-eD-eCb"/>
+                            <constraint firstItem="bGI-Ql-jGL" firstAttribute="leading" secondItem="FQQ-y4-Lvx" secondAttribute="leading" id="vhr-QO-vE4"/>
+                            <constraint firstItem="bGI-Ql-jGL" firstAttribute="trailing" secondItem="Ah3-65-G7a" secondAttribute="trailing" id="zG6-RH-4Ua"/>
+                            <constraint firstItem="bGI-Ql-jGL" firstAttribute="leading" secondItem="Ah3-65-G7a" secondAttribute="leading" id="zHb-Oh-g2J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z4k-tH-XB5"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="Ah3-65-G7a" id="V9W-W7-otE"/>
+                        <outlet property="titleField" destination="bGI-Ql-jGL" id="Hwk-vk-wsC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OkX-Bw-yul" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3273.913043478261" y="-85.044642857142847"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="9QE-7y-kYS">
             <objects>
@@ -288,8 +382,10 @@
     </scenes>
     <resources>
         <image name="arrow.left.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="checkmark.circle.fill" catalog="system" width="64" height="60"/>
         <image name="person" catalog="system" width="64" height="58"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="trash.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
     <color key="tintColor" red="0.90717212599999997" green="0.86290729440000002" blue="0.58055683759999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
