@@ -141,11 +141,6 @@ class NoteViewController: UIViewController {
         self.present(alertLength, animated: true);
     }
     
-    func replaceSpaces(urlString: String) -> String{
-        //Replaces Spaces in String URL with %20.
-        
-    }
-    
     /*
     // MARK: - Navigation
 
