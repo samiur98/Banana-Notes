@@ -254,22 +254,19 @@
                                     <action selector="goBack:" destination="s7L-9Q-p1k" eventType="touchUpInside" id="dsP-vS-uZ2"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gmq-yK-hJu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="713"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gmq-yK-hJu">
+                                <rect key="frame" x="0.0" y="20" width="414" height="692"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="D5b-2A-XrC">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="693"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FIv-uj-X9I">
+                                        <rect key="frame" x="0.0" y="268" width="410" height="200"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="1Zs-2P-PVW" firstAttribute="bottom" secondItem="D5b-2A-XrC" secondAttribute="bottom" id="C2b-9j-M6d"/>
-                                    <constraint firstItem="D5b-2A-XrC" firstAttribute="width" secondItem="Gmq-yK-hJu" secondAttribute="width" id="Xic-9y-rZ1"/>
-                                    <constraint firstItem="D5b-2A-XrC" firstAttribute="height" secondItem="Gmq-yK-hJu" secondAttribute="height" multiplier="0.97195" priority="250" id="cj2-fg-7K4"/>
-                                    <constraint firstItem="D5b-2A-XrC" firstAttribute="trailing" secondItem="1Zs-2P-PVW" secondAttribute="trailing" id="l5k-Ey-fij"/>
-                                    <constraint firstItem="D5b-2A-XrC" firstAttribute="bottom" secondItem="1Zs-2P-PVW" secondAttribute="bottom" id="m0j-nD-Fxf"/>
-                                    <constraint firstItem="D5b-2A-XrC" firstAttribute="top" secondItem="1Zs-2P-PVW" secondAttribute="top" id="nVz-R1-AmX"/>
-                                    <constraint firstItem="1Zs-2P-PVW" firstAttribute="trailing" secondItem="D5b-2A-XrC" secondAttribute="trailing" id="qNw-eL-3Ez"/>
-                                    <constraint firstItem="D5b-2A-XrC" firstAttribute="leading" secondItem="1Zs-2P-PVW" secondAttribute="leading" id="yDX-9p-NOL"/>
+                                    <constraint firstItem="FIv-uj-X9I" firstAttribute="top" secondItem="JqV-on-nAt" secondAttribute="top" id="E8h-Qm-vyM"/>
+                                    <constraint firstItem="FIv-uj-X9I" firstAttribute="leading" secondItem="JqV-on-nAt" secondAttribute="leading" id="Lny-7Y-FCN"/>
+                                    <constraint firstItem="FIv-uj-X9I" firstAttribute="width" secondItem="1Zs-2P-PVW" secondAttribute="width" multiplier="0.2657" constant="300" id="Nye-fE-jOE"/>
+                                    <constraint firstItem="FIv-uj-X9I" firstAttribute="bottom" secondItem="JqV-on-nAt" secondAttribute="bottom" id="ORP-gH-Nis"/>
+                                    <constraint firstItem="FIv-uj-X9I" firstAttribute="trailing" secondItem="JqV-on-nAt" secondAttribute="trailing" id="THo-qF-ZIJ"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="JqV-on-nAt"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="1Zs-2P-PVW"/>
@@ -279,7 +276,7 @@
                         <constraints>
                             <constraint firstItem="Gmq-yK-hJu" firstAttribute="top" secondItem="9Rm-26-Jcm" secondAttribute="top" constant="20" symbolic="YES" id="0uG-S7-v8N"/>
                             <constraint firstItem="4cw-4e-owM" firstAttribute="leading" secondItem="lBg-gc-M7X" secondAttribute="leading" constant="60" id="8CB-mB-DuI"/>
-                            <constraint firstItem="s7Q-sH-cZa" firstAttribute="top" secondItem="Gmq-yK-hJu" secondAttribute="bottom" constant="8" id="OLE-Gg-EXN"/>
+                            <constraint firstItem="lBg-gc-M7X" firstAttribute="bottom" secondItem="Gmq-yK-hJu" secondAttribute="bottom" constant="150" id="Qwj-DD-HFc"/>
                             <constraint firstItem="Gmq-yK-hJu" firstAttribute="leading" secondItem="lBg-gc-M7X" secondAttribute="leading" id="UxR-Iv-ExZ"/>
                             <constraint firstItem="lBg-gc-M7X" firstAttribute="trailing" secondItem="s7Q-sH-cZa" secondAttribute="trailing" constant="60" id="iDH-NR-vSi"/>
                             <constraint firstItem="lBg-gc-M7X" firstAttribute="bottom" secondItem="4cw-4e-owM" secondAttribute="bottom" constant="50" id="oMw-Cc-iiI"/>
@@ -289,6 +286,9 @@
                         <viewLayoutGuide key="safeArea" id="lBg-gc-M7X"/>
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="stackView" destination="FIv-uj-X9I" id="151-Ra-v7L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2U-b4-uQy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

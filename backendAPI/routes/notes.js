@@ -12,9 +12,26 @@ const pool = mysql.createPool({
     database: 'banana_notes'
 })
 
+router.get('/getNotes/:userID', (req, res) => {
+    //GET request for all notes of a user.
+    console.log("Processing GET request for all notes of a user.")
+    let user_id = req.params.userID
+
+    sqlQuery = `SELECT * FROM notes WHERE user_id = ${user_id};`
+    pool.query(sqlQuery, (err, rows, field) => {
+        if(err){
+            console.log(err)
+            console.log("Error in connecting to database while processing GET request for all notes")
+            res.sendStatus(500)
+            return
+        }
+        res.send(rows)
+    })
+})
+
 router.get('/getNote/:userID/:title', (req, res) => {
-    //GET request for notes.
-    console.log("Processing GET request for notes.")
+    //GET request for a particular note of a user.
+    console.log("Processing GET request for a particular note of a user.")
     const title = req.params.title
     const userID = req.params.userID
 
