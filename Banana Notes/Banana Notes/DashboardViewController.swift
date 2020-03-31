@@ -25,10 +25,6 @@ class DashboardViewController: UIViewController {
         NSLog("Log");
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-    }
-    
     @IBAction func goBack(_ sender: Any) {
         //Method that returns user to login page.
         NSLog("Back Button Pressed.");
@@ -134,6 +130,7 @@ class DashboardViewController: UIViewController {
     }
     
     func generateDataAlert(){
+        //Alert for internal Error.
         let alertData = UIAlertController(title: "Internal Error", message: "Sorry could not gather you're notes.", preferredStyle: .alert);
         alertData.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil));
         self.present(alertData, animated: true);

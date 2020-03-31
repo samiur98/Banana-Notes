@@ -54,7 +54,7 @@ class NoteViewController: UIViewController {
             //updateRequest();
         }
         else{
-            let postURLString = "http://localhost:3020/notes/addNote/" + self.userID.description + "/" + self.titleField.text! + "/" + self.textView.text;
+            let postURLString = "http://localhost:3020/notes/addNote/" + self.userID.description;
             let url = URL(string: postURLString);
             if(url == nil){
                 NSLog("URL formatted incorrectly.")
@@ -70,7 +70,7 @@ class NoteViewController: UIViewController {
     }
     
     func fieldCheck() -> Bool{
-        //Checks whether or not the fields have been foenatted correctly.
+        //Checks whether or not the fields have been formatted correctly.
         if(titleField == nil){
             NSLog("Title field is nil");
             generateErrorAlert();
@@ -99,10 +99,33 @@ class NoteViewController: UIViewController {
         let sharedSession = URLSession.shared;
         var request = URLRequest(url: url);
         request.httpMethod = "POST";
+        /*let body = ["title": titleField.text!, "note": textView.text!];
+        do{
+            let jsonData = try JSONSerialization.data(withJSONObject: body);
+            NSLog(jsonData.description);
+            request.httpBody = jsonData;
+            
+        }catch{
+            NSLog("Error in parsing JSON.");
+            self.generateErrorAlert();
+        }
+        */
+        let bodyString = "title=" + titleField.text! + "&note=" + textView.text;
+        request.httpBody = bodyString.data(using: String.Encoding.utf8);
+        
         
         let dataTask = sharedSession.dataTask(with: request) {
             (data, response, apiError) in
             DispatchQueue.main.async {
+                /*if let d = data{
+                    do{
+                        let e = try JSONSerialization.jsonObject(with: d, options: .mutableContainers) as? [[String: Any]];
+                        NSLog(e!.description)
+                    } catch{
+                        NSLog("Daughters")
+                    }
+                }*/
+                
                 if let err = apiError{
                     NSLog("Error connecting to API");
                     NSLog(err.localizedDescription);

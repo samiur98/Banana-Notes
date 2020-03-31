@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const body_paser = require('body-parser')
-router.use(body_paser.urlencoded({extended: false}))
+router.use(body_paser.urlencoded({extended: true}))
+router.use(body_paser.json())
 const mysql = require('mysql')
 
 const pool = mysql.createPool({
@@ -54,12 +55,15 @@ router.get('/getNote/:noteID', (req, res) => {
     })
 })
 
-router.post('/addNote/:userID/:title/:text', (req, res) => {
+router.post('/addNote/:userID', (req, res) => {
     //POST request for notes.
     console.log("Processing POST request for notes.")
+    console.log(req.body);
     const userID = req.params.userID
-    const title = req.params.title
-    const text = req.params.text
+    //const req_body = JSON.parse(req.body)
+    const title = req.body.title
+    console.log("This is the title === " + title)
+    const text = req.body.note
     if((title.length > 100) || (text.length > 16000)){
         console.log("Title and/or note length exceeds allowed capacity.")
         res.sendStatus(400)
