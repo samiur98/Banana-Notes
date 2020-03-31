@@ -56,13 +56,11 @@ router.get('/getNote/:noteID', (req, res) => {
 })
 
 router.post('/addNote/:userID', (req, res) => {
-    //POST request for notes.
+    //POST request for adding notes.
     console.log("Processing POST request for notes.")
     console.log(req.body);
     const userID = req.params.userID
-    //const req_body = JSON.parse(req.body)
     const title = req.body.title
-    console.log("This is the title === " + title)
     const text = req.body.note
     if((title.length > 100) || (text.length > 16000)){
         console.log("Title and/or note length exceeds allowed capacity.")
@@ -78,31 +76,33 @@ router.post('/addNote/:userID', (req, res) => {
             res.sendStatus(500)
             return
         }
-        console.log("POST request for notes successfully processed")
+        console.log("POST request for adding note successfully processed")
         res.sendStatus(201)
     })
 })
 
-router.put('/updateNote/:userID/:title/:text', (req, res) => {
-    //PUT request for notes.
-    console.log("Processing PUT request for notes.")
-    const userID = req.params.userID
-    const title = req.params.title
-    const text = req.params.text
-    if((title.length > 100) || (text.length > 160000)){
+router.post('/updateNote/:noteID', (req, res) => {
+    //POST request for updating notes.
+    console.log("Processing POST request for notes.")
+    console.log(req.body);
+    const noteID = req.params.noteID
+    const title = req.body.title
+    const text = req.body.note
+    if((title.length > 100) || (text.length > 16000)){
         console.log("Title and/or note length exceeds allowed capacity.")
         res.sendStatus(400)
+        return
     }
-
-    sqlQuery = `UPDATE notes SET note = '${text}' WHERE user_id = '${userID}' AND title = '${title}'`
+    
+    sqlQuery = `UPDATE notes SET note = '${text}', title = '${title}' WHERE id = ${noteID}`
     pool.query(sqlQuery, (err, rows, fields) => {
         if(err){
             console.log(err)
-            console.log("Error in connecting to database during PUT request")
+            console.log("Error in connecting to database during POST request.")
             res.sendStatus(500)
             return
         }
-        console.log("PUT request for notes successfully processed.")
+        console.log("POST request for updating note successfully processed")
         res.sendStatus(201)
     })
 })

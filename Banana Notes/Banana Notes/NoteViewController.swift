@@ -50,19 +50,20 @@ class NoteViewController: UIViewController {
             NSLog("Fields not filled out properly.")
             return;
         }
+        var postURLString: String?;
         if(updating){
-            //updateRequest();
+            postURLString = "http://localhost:3020/notes/updateNote/" + self.noteID.description;
         }
         else{
-            let postURLString = "http://localhost:3020/notes/addNote/" + self.userID.description;
-            let url = URL(string: postURLString);
-            if(url == nil){
-                NSLog("URL formatted incorrectly.")
-                self.generateErrorAlert();
-                return;
-            }
-            postRequest(url: url!);
+            postURLString = "http://localhost:3020/notes/addNote/" + self.userID.description;
         }
+        let url = URL(string: postURLString!);
+        if(url == nil){
+            NSLog("URL formatted incorrectly.")
+            self.generateErrorAlert();
+            return;
+        }
+        postRequest(url: url!);
     }
     
     
@@ -99,17 +100,6 @@ class NoteViewController: UIViewController {
         let sharedSession = URLSession.shared;
         var request = URLRequest(url: url);
         request.httpMethod = "POST";
-        /*let body = ["title": titleField.text!, "note": textView.text!];
-        do{
-            let jsonData = try JSONSerialization.data(withJSONObject: body);
-            NSLog(jsonData.description);
-            request.httpBody = jsonData;
-            
-        }catch{
-            NSLog("Error in parsing JSON.");
-            self.generateErrorAlert();
-        }
-        */
         let bodyString = "title=" + titleField.text! + "&note=" + textView.text;
         request.httpBody = bodyString.data(using: String.Encoding.utf8);
         
@@ -117,15 +107,6 @@ class NoteViewController: UIViewController {
         let dataTask = sharedSession.dataTask(with: request) {
             (data, response, apiError) in
             DispatchQueue.main.async {
-                /*if let d = data{
-                    do{
-                        let e = try JSONSerialization.jsonObject(with: d, options: .mutableContainers) as? [[String: Any]];
-                        NSLog(e!.description)
-                    } catch{
-                        NSLog("Daughters")
-                    }
-                }*/
-                
                 if let err = apiError{
                     NSLog("Error connecting to API");
                     NSLog(err.localizedDescription);
@@ -151,7 +132,7 @@ class NoteViewController: UIViewController {
     }
     
     func getRequest(url: URL){
-        //Processess GET request for an existing note, to get title and body.
+        //GET request for an existing note, to get title and body.
         let sharedSession = URLSession.shared;
         let request = URLRequest(url: url);
         
