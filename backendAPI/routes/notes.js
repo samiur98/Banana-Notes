@@ -29,13 +29,12 @@ router.get('/getNotes/:userID', (req, res) => {
     })
 })
 
-router.get('/getNote/:userID/:title', (req, res) => {
+router.get('/getNote/:noteID', (req, res) => {
     //GET request for a particular note of a user.
     console.log("Processing GET request for a particular note of a user.")
-    const title = req.params.title
-    const userID = req.params.userID
+    const noteID = req.params.noteID
 
-    sqlQuery = `SELECT * FROM notes WHERE user_id = ${userID} AND title = '${title}';`
+    sqlQuery = `SELECT * FROM notes WHERE id = ${noteID};`
     pool.query(sqlQuery, (err, rows, fields) => {
         if(err){
             console.log(err)
@@ -44,13 +43,14 @@ router.get('/getNote/:userID/:title', (req, res) => {
             return
         }
         if(rows.length <= 0){
-            console.log(`Note ${title} not found for user ${userID}`)
+            console.log(`Note ${noteID} not found`)
             res.sendStatus(404)
             return
         }
         const noteID = rows[0].id
         const text = rows[0].note
-        res.send({"userID" : userID, "noteID" : noteID, "title" : title, "text" : text})
+        const title = rows[0].title
+        res.send({"noteID" : noteID, "title" : title, "text" : text})
     })
 })
 

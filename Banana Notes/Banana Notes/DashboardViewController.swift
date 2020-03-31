@@ -54,10 +54,10 @@ class DashboardViewController: UIViewController {
             self.generateDataAlert();
             return;
         }
-        getRequest(url: url!);
+        getRequestNotes(url: url!);
     }
     
-    func getRequest(url: URL){
+    func getRequestNotes(url: URL){
         //GET request to API for user's notes.
         NSLog("Processing GET request.");
         let sharedSession = URLSession.shared;
@@ -108,6 +108,8 @@ class DashboardViewController: UIViewController {
     }
     
     func getNote(noteID: Int, noteTitle: String) -> UIView{
+        //Returns UIElement(UIButton) to show user's their notes in the dashboard.
+        NSLog("Returning Note.")
         let returnButton = UIButton();
         let heightConstraint = NSLayoutConstraint(item: returnButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200);
         let widthConstraint = NSLayoutConstraint(item: returnButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 650);
@@ -116,7 +118,19 @@ class DashboardViewController: UIViewController {
         returnButton.backgroundColor = .white;
         returnButton.setTitle(noteTitle, for: .normal);
         returnButton.setTitleColor(.darkText, for: .normal);
+        returnButton.tag = noteID;
+        returnButton.addTarget(self, action: #selector(notePressed), for: .touchUpInside);
         return returnButton;
+    }
+    
+    @objc func notePressed(_ sender: UIButton){
+        //Method executed when a note is toched in the dahsboard.
+        let note = self.storyboard?.instantiateViewController(withIdentifier: "NoteViewController") as! NoteViewController;
+        note.modalPresentationStyle = .fullScreen;
+        note.userID = userID;
+        note.updating = true;
+        note.noteID = sender.tag;
+        self.present(note, animated: true, completion: nil);
     }
     
     func generateDataAlert(){
