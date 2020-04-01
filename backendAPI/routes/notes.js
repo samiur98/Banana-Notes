@@ -93,7 +93,7 @@ router.post('/updateNote/:noteID', (req, res) => {
         res.sendStatus(400)
         return
     }
-    
+
     sqlQuery = `UPDATE notes SET note = '${text}', title = '${title}' WHERE id = ${noteID}`
     pool.query(sqlQuery, (err, rows, fields) => {
         if(err){
@@ -107,13 +107,12 @@ router.post('/updateNote/:noteID', (req, res) => {
     })
 })
 
-router.delete('/deleteNote/:userID/:title', (req, res) => {
+router.delete('/deleteNote/:noteID', (req, res) => {
     //DELETE request for notes.
     console.log("Processing DELETE request for notes.")
-    const userID = req.params.userID
-    const title = req.params.title
+    const noteID = req.params.noteID
 
-    sqlQuery = `DELETE FROM notes WHERE user_id = '${userID}' AND title = '${title}'`
+    sqlQuery = `DELETE FROM notes WHERE id = '${noteID}'`
     pool.query(sqlQuery, (err, rows, fields) => {
         if(err){
             console.log(err)

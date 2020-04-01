@@ -91,6 +91,9 @@ class DashboardViewController: UIViewController {
     func populateStackView(jsonArray : [[String: Any]]){
         //Adds notes retrieved from database to stackview as UI elements.
         NSLog("Populating Stack View.");
+        if(jsonArray.count == 0){
+            return;
+        }
         for view in stackView.arrangedSubviews{
             stackView.removeArrangedSubview(view);
         }

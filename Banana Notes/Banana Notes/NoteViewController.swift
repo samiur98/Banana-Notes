@@ -68,6 +68,16 @@ class NoteViewController: UIViewController {
     
     
     @IBAction func deleteNote(_ sender: Any) {
+        //Method that deletes a node.
+        NSLog("Delete Button Pressed.");
+        let deleteURLString = "http://localhost:3020/notes/deleteNote/" + self.noteID.description;
+        let url = URL(string: deleteURLString);
+        if(url == nil){
+            NSLog("URL formatted incorrectly.");
+            self.generateErrorAlert();
+            return;
+        }
+        deleteRequest(url: url!);
     }
     
     func fieldCheck() -> Bool{
@@ -169,6 +179,36 @@ class NoteViewController: UIViewController {
                 }
                 
             }
+        }
+        dataTask.resume();
+    }
+    
+    func deleteRequest(url: URL){
+        //DELETE request for an existing note.
+        let sharedSession = URLSession.shared;
+        var request = URLRequest(url: url);
+        request.httpMethod = "DELETE";
+        
+        let dataTask = sharedSession.dataTask(with: request){
+            (data, response, apiError) in
+            DispatchQueue.main.async{
+                if let err = apiError{
+                    NSLog("Error connecting to API.");
+                    NSLog(err.localizedDescription);
+                    self.generateErrorAlert();
+                }
+                if let res = response as? HTTPURLResponse{
+                    if(res.statusCode == 500){
+                        NSLog("Server Error.");
+                        self.generateErrorAlert();
+                    }
+                    if(res.statusCode == 204){
+                        NSLog("Note Successfully Deleted.");
+                        self.presentingViewController?.dismiss(animated: true, completion: nil);
+                    }
+                }
+            }
+          
         }
         dataTask.resume();
     }
